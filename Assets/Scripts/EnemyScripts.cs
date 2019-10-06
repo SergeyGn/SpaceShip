@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyScripts : MonoBehaviour
 {
     [SerializeField]
-    private Vector2 speed = new Vector2(10, 10);
+    private Vector2 speed = new Vector2(10, 10); //this is speed
     [SerializeField]
     private Vector2 direction = new Vector2(-1, 0);
     private Vector2 movement;

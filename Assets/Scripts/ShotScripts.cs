@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class ShotScripts : MonoBehaviour
 {
-    [SerializeField]
-    private int damage = 1;
-    [SerializeField]
-    private bool isEnemyShot = false;
+    
+    public int damage = 1;
+    public bool isEnemyShot = false;
     private void Start()
     {
         Destroy(gameObject, 5);

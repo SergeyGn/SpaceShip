@@ -5,22 +5,19 @@ using UnityEngine;
 public class EnemyScripts : MonoBehaviour
 {
     [SerializeField]
-    private Vector2 speed = new Vector2(10, 10); //this is speed
-    [SerializeField]
-    private Vector2 direction = new Vector2(-1, 0);
-    private Vector2 movement;
-    Rigidbody2D rigidbody;
+    private WeaponsScripts[] weaponss;
 
-    private void Start()
+    private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        weaponss = GetComponentsInChildren<WeaponsScripts>();
     }
+
     void Update()
     {
-        movement = new Vector2(speed.x * direction.x, speed.y*direction.y); 
-    }
-    private void FixedUpdate()
-    {
-        rigidbody.velocity = movement;
+        foreach (WeaponsScripts weapons in weaponss)
+            if(weapons!=null && weapons.CanAttack)
+            {
+                weapons.Attack(true);
+            }
     }
 }

@@ -19,6 +19,10 @@ public class PLayerScripts : MonoBehaviour
         movement = new Vector2(speed.x * InputX, speed.y * InputY);
         bool isShot = Input.GetButtonDown("Fire1");
         isShot |= Input.GetButtonDown("Fire2");
+        if (transform.position.y >= 10) transform.position = new Vector2(transform.position.x,10);
+        if (transform.position.y <= -10) transform.position = new Vector2(transform.position.x, -10);
+        if (transform.position.x >= 10) transform.position = new Vector2(10, transform.position.y);
+        if (transform.position.x <= -10) transform.position = new Vector2(-10, transform.position.y);
         if (isShot)
         {
             WeaponsScripts weapons = GetComponent<WeaponsScripts>();
@@ -40,7 +44,7 @@ public class PLayerScripts : MonoBehaviour
             isDamagePlayer = true;
 
         }
-        if(isDamagePlayer)
+        if(isDamagePlayer) 
         {
             HealthShotScripts playerHealth = this.GetComponent<HealthShotScripts>();
             if (playerHealth != null) playerHealth.Damage(1);

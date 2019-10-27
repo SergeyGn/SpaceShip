@@ -18,7 +18,9 @@ public class PlatformsScript : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= spawnCoolDawn)
         {
-            int numberPlatform = Random.Range(1, 2);
+           
+                int numberPlatform = Random.Range(1, 3);
+
             switch (numberPlatform)
             {
                 case 1:
@@ -28,9 +30,10 @@ public class PlatformsScript : MonoBehaviour
                     Spawn(_platform2);
                     break;
             }
-
-
         }
+
+
+        
 
 
     }
@@ -41,7 +44,7 @@ public class PlatformsScript : MonoBehaviour
         var platformTransform = Instantiate(platform);
         platformTransform.GetComponent<ScrollingScripts>().SetSpeed(new Vector2(2*scaleZnachenie, 2*scaleZnachenie));
         platformTransform.localScale = new Vector3(transform.localScale.x * scaleZnachenie, transform.localScale.y * scaleZnachenie, 1);
-        platformTransform.position = new Vector3(transform.position.x, transform.position.y + position, transform.position.z + position);
+        platformTransform.position = new Vector3(transform.position.x, transform.position.y + position, transform.position.z - position);
         timer = 0;
     }
 

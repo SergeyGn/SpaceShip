@@ -9,7 +9,7 @@ public class EnemyScripts : MonoBehaviour
 
     private void Start()
     {
-        Destroy(gameObject, 3);
+        Destroy(gameObject, 6);
     }
 
     private void Awake()

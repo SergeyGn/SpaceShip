@@ -6,8 +6,8 @@ public class SpawnScripts : MonoBehaviour
 {
     [SerializeField]
     private Transform _EnemyPrefab;
-    private float _EnemyCooldown;
-    private float spawnCoolDawn=1;
+    private float _EnemyCooldown=5f;
+    public float spawnCoolDawn=5f;
     private float timer=0;
 
 

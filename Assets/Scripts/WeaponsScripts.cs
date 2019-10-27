@@ -22,7 +22,7 @@ public class WeaponsScripts : MonoBehaviour
 
     void Start()
     {
-        _shotCooldown = 0f;
+        _shotCooldown = 1f;
     }
 
     void Update()

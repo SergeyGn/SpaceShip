@@ -173,6 +173,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   isEnemy: 1
+  smokeEffect: {fileID: 8856787491809528892, guid: 58451aebaba66254195cb494570e934e,
+    type: 3}
 --- !u!1001 &5009404223071828562
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PointScripts : MonoBehaviour
+public class GameScripts : MonoBehaviour
 {
+
     private float timer;
+
+    public int recordTime;
 
     [SerializeField]
     private Transform _spawn;
@@ -13,31 +15,17 @@ public class PointScripts : MonoBehaviour
     [SerializeField]
     private Transform _menu;
 
-    bool isStart = false;
-
-    void Update()
-    {
-        if (isStart == true)
-        {
-            timer += Time.deltaTime;
-            int time = (int)timer;
-            GetComponent<Text>().text = $"Time: {time} s.";
-        }
-        //if (time >= 10) GetComponent<Text>().color = Color.red;
-        ////for (time=1; ;time+=10)
-        ////{
-        ////    GetComponent<SpawnScripts>().spawnCoolDawn -= 1;
-        ////}
+    static public bool isStart = false;
 
 
-    }
-    
+
+
     public void Button_Start()
     {
         isStart = true;
- 
+
         _spawn.GetComponent<SpawnScripts>().enabled = true;
-       _menu.gameObject.SetActive(false);
+        _menu.gameObject.SetActive(false);
     }
     public void Button_Quit()
     {
@@ -51,9 +39,8 @@ public class PointScripts : MonoBehaviour
     {
         _spawn.GetComponent<SpawnScripts>().spawnCoolDawn = 3f;
     }
-   public  void Сomplexity_Hard()
+    public void Сomplexity_Hard()
     {
         _spawn.GetComponent<SpawnScripts>().spawnCoolDawn = 1f;
     }
-
 }

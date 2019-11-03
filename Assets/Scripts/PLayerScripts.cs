@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PLayerScripts : MonoBehaviour
@@ -7,10 +6,19 @@ public class PLayerScripts : MonoBehaviour
     [SerializeField]
     private Vector2 speed = new Vector2(50, 50);
     private Vector2 movement;
+    private Vector2 upLeft;
+    private Vector2 downRight;
+
     Rigidbody2D rigidbody1;
+    HealthShotScripts healthShot;
     private void Start()
     {
         rigidbody1 = GetComponent<Rigidbody2D>();
+
+        healthShot = GetComponent<HealthShotScripts>();
+
+        upLeft = Camera.main.ScreenToWorldPoint(new Vector3(0f, Screen.height, 0f));
+        downRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0f, 0f));
     }
     void Update()
     {
@@ -19,10 +27,10 @@ public class PLayerScripts : MonoBehaviour
         movement = new Vector2(speed.x * InputX, speed.y * InputY);
         bool isShot = Input.GetButtonDown("Fire1");
         isShot |= Input.GetButtonDown("Fire2");
-        if (transform.position.y >= 10) transform.position = new Vector2(transform.position.x,10);
-        if (transform.position.y <= -10) transform.position = new Vector2(transform.position.x, -10);
-        if (transform.position.x >= 10) transform.position = new Vector2(10, transform.position.y);
-        if (transform.position.x <= -10) transform.position = new Vector2(-10, transform.position.y);
+        if (transform.position.y >= upLeft.y-0.6f) transform.position = new Vector2(transform.position.x,upLeft.y-0.6f);
+        if (transform.position.y <= downRight.y+0.6f) transform.position = new Vector2(transform.position.x, downRight.y+0.6f);
+        if (transform.position.x >= downRight.x-0.6f) transform.position = new Vector2(downRight.x-0.6f, transform.position.y);
+        if (transform.position.x <= upLeft.x+0.6f) transform.position = new Vector2(upLeft.x+0.6f, transform.position.y);
         if (isShot)
         {
             WeaponsScripts weapons = GetComponent<WeaponsScripts>();

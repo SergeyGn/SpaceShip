@@ -12,7 +12,7 @@ public class BackgroundScripts : MonoBehaviour
         {
             
             var next = Instantiate(gameObject);
-            next.transform.position = new Vector2(21.67f, -1.67f);
+            next.transform.position = new Vector3(21.67f, -1.67f, 10f);
             isInstantiate = true;
         }
         if (transform.position.x <= -20.58) Destroy(gameObject);

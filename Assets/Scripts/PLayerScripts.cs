@@ -6,8 +6,10 @@ public class PLayerScripts : MonoBehaviour
     [SerializeField]
     private Vector2 speed = new Vector2(50, 50);
     private Vector2 movement;
-    private Vector2 upLeft;
-    private Vector2 downRight;
+    //private Vector2 upLeft;
+    //private Vector2 downRight;
+
+    //private Vector2 _pastPosition;
 
     Rigidbody2D rigidbody1;
     HealthShotScripts healthShot;
@@ -17,20 +19,48 @@ public class PLayerScripts : MonoBehaviour
 
         healthShot = GetComponent<HealthShotScripts>();
 
-        upLeft = Camera.main.ScreenToWorldPoint(new Vector3(0f, Screen.height, 0f));
-        downRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0f, 0f));
+        //upLeft = Camera.main.ScreenToWorldPoint(new Vector3(0f, Screen.height, 0f));
+        //downRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0f, 0f));
     }
     void Update()
     {
-        float InputX = Input.GetAxis("Horizontal");
-        float InputY = Input.GetAxis("Vertical");
-        movement = new Vector2(speed.x * InputX, speed.y * InputY);
+       float InputX = Input.GetAxis("Horizontal");
+       float InputY = Input.GetAxis("Vertical");
         bool isShot = Input.GetButtonDown("Fire1");
         isShot |= Input.GetButtonDown("Fire2");
-        if (transform.position.y >= upLeft.y-0.6f) transform.position = new Vector2(transform.position.x,upLeft.y-0.6f);
-        if (transform.position.y <= downRight.y+0.6f) transform.position = new Vector2(transform.position.x, downRight.y+0.6f);
-        if (transform.position.x >= downRight.x-0.6f) transform.position = new Vector2(downRight.x-0.6f, transform.position.y);
-        if (transform.position.x <= upLeft.x+0.6f) transform.position = new Vector2(upLeft.x+0.6f, transform.position.y);
+
+        //if (Input.touchCount > 0)
+        //{
+        //    Debug.Log("Touch");
+        //    Touch touch = Input.GetTouch(0);
+        //    if (touch.phase==TouchPhase.Moved)
+        //    {
+        //        Vector2 pos = touch.position;
+        //        InputX = pos.x-_pastPosition.x;
+        //        InputY =pos.y-_pastPosition.y;
+
+        //        _pastPosition = pos;
+        //    }
+        //    else if(touch.phase == TouchPhase.Began)
+        //    {
+        //        Debug.Log($"position {touch.position}");
+        //        _pastPosition = touch.position;
+        //    }
+                
+        //}
+        //else
+        //{
+        //    InputX = 0;
+        //    InputY = 0;
+        //}
+
+
+        movement = new Vector2(speed.x * InputX, speed.y * InputY);
+
+        //if (transform.position.y >= upLeft.y-0.6f) transform.position = new Vector2(transform.position.x,upLeft.y-0.6f);
+        //if (transform.position.y <= downRight.y+0.6f) transform.position = new Vector2(transform.position.x, downRight.y+0.6f);
+        //if (transform.position.x >= downRight.x-0.6f) transform.position = new Vector2(downRight.x-0.6f, transform.position.y);
+        //if (transform.position.x <= upLeft.x+0.6f) transform.position = new Vector2(upLeft.x+0.6f, transform.position.y);
         if (isShot)
         {
             WeaponsScripts weapons = GetComponent<WeaponsScripts>();

@@ -17,7 +17,7 @@ public class MoveScripts : MonoBehaviour
         speed.x += speedUp;
         if(speedUp>3)
         {
-            GetComponent<SpriteRenderer>().color=Color.green;
+            GetComponent<SpriteRenderer>().color=Color.red;
         }
 
     }

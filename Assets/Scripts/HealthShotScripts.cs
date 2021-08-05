@@ -38,7 +38,7 @@ public class HealthShotScripts : MonoBehaviour
                 if (isEnemy == false)
                 {
                     GameScripts.isStart = false;
-                    SceneManager.LoadScene("SampleScene");
+                    SceneManager.LoadScene("ShipScene");
                 }
             }
         }
